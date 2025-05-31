@@ -67,8 +67,7 @@ static inline void trace_to_perf_buffer(struct xdp_buff *xdp, bool fexit,
 	void *data = (void *)(long)xdp->data;
 	struct pkt_trace_metadata metadata;
 
-	if (data >= data_end ||
-	    trace_cfg.capture_if_ifindex != xdp->rxq->dev->ifindex)
+	if (data >= data_end)
 		return;
 
 	metadata.prog_index = trace_cfg.capture_prog_index;
